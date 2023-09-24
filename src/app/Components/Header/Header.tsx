@@ -1,43 +1,66 @@
 "use client";
-import React from "react";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { GiHamburgerMenu } from "react-icons/gi";
+import React, { useState } from "react";
+import { MdOutlineDarkMode, MdOutlineWbSunny } from "react-icons/md";
+import { RiMenu4Line } from "react-icons/ri";
 import { useTheme } from "next-themes";
+
+import Sidebar from "../Sidebar/Sidebar";
 
 const Header = () => {
   const { resolvedTheme, setTheme } = useTheme();
+  const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="flex  justify-center items-center p-4 border border-green-800 h-20 ">
-      <div className="flex justify-between w-full md:w-[80%]">
-        <div className="border border-red-400  flex gap-1 items-center">
-          <span className="flex justify-center items-center border rounded-full w-9 h-9 bg-black text-white first-line:">
-            R
-          </span>
-          <span>Rohit Sutar</span>
-        </div>
+    <div id="home">
+      <div className="h-20 ">
+        <div className="fixed z-20 flex justify-between w-full shadow-lg h-20 px-4 md:px-40 bg-bodyColor dark:bg-black">
+          <div className="flex gap-2 items-center">
+            <span className="flex justify-center items-center  rounded-full w-8 h-8 bg-blackColor dark:bg-blackColorLight text-whiteColor  font-semibold">
+              R
+            </span>
+            <span className="font-semibold">Rohit Sutar</span>
+          </div>
 
-        <div className="border border-gray-900 flex">
-          <ul className="hidden md:flex">
-            <li>Home</li>
-            <li>About Me</li>
-            <li>Projects</li>
-          </ul>
+          <div className="flex justify-center items-center gap-4 md:gap-10 font-medium">
+            <ul className="hidden md:flex gap-10">
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              <li>
+                <a href="#aboutme">About Me</a>
+              </li>
+              <li>
+                <a href="#projects">Projects</a>
+              </li>
+            </ul>
 
-          <button className="hidden md:block">Contact Me</button>
-          <span
-            onClick={() =>
-              setTheme(resolvedTheme === "dark" ? "light" : "dark")
-            }
-          >
-            <MdOutlineDarkMode />
-          </span>
+            <div className="hidden md:block  px-3 py-2 bg-blackColor dark:bg-blackColorLight text-whiteColor">
+              <button className="">Contact Me</button>
+            </div>
 
-          <span className="md:hidden">
-            <GiHamburgerMenu />
-          </span>
+            <span
+              onClick={() =>
+                setTheme(resolvedTheme === "dark" ? "light" : "dark")
+              }
+              className="text-2xl"
+            >
+              {resolvedTheme === "dark" ? (
+                <MdOutlineWbSunny />
+              ) : (
+                <MdOutlineDarkMode />
+              )}
+            </span>
+
+            <span
+              className="md:hidden text-lg p-[0.35rem] bg-blackColor dark:bg-blackColorLight text-whiteColor"
+              onClick={() => setOpenMenu(!openMenu)}
+            >
+              <RiMenu4Line />
+            </span>
+          </div>
         </div>
       </div>
+      <Sidebar openMenu={openMenu} setOpenMenu={setOpenMenu} />
     </div>
   );
 };

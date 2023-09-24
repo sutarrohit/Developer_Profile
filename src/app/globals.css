@@ -3,8 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --text-color: hsl(0, 0%, 35%);
-  --body-color: hsl(0, 0%, 87%);
+  --first-color: #fc3d03;
+  --black-color: #000000;
+  --black-color-light: #666666;
+  --white-color: #f2f2f2;
+  --title-color: #000000;
+  --text-color: #595959;
+  --text-color-light: #a3a3a3;
+  --body-color: #dedede;
+  --container-color: #d4d4d4;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.geometric-box {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: var(--first-color);
+  rotate: -30deg;
+}
+
+.geometric-box::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 3px solid #595959;
+  left: -7px;
+  top: -7px;
 }
 
 /* body {

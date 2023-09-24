@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" style={{ colorScheme: "light" }}>
       <body
-        className={`${bai_jamjuree.className}  bg-[#dedede] dark:bg-black dark:text-white text-black`}
+        className={`${bai_jamjuree.className} bg-bodyColor dark:bg-black text-textColor dark:text-bodyColor`}
       >
         <Providers>{children}</Providers>
       </body>
