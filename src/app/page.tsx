@@ -1,7 +1,9 @@
 import Header from "./Components/Header/Header";
 import HomeComponent from "./Components/HomeComponent/HomeComponent";
 import Projects from "./Components/Projects/Projects";
-import About from "./Components/About/About";
+import Skills from "./Components/Skills/Skills";
+import ContactMe from "./Components/ContactMe/ContactMe";
+import Footer from "./Components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -9,7 +11,9 @@ export default function Home() {
       <Header />
       <HomeComponent />
       <Projects />
-      <About />
+      <Skills />
+      <ContactMe />
+      <Footer />
     </div>
   );
 }

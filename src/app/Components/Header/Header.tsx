@@ -22,20 +22,37 @@ const Header = () => {
           </div>
 
           <div className="flex justify-center items-center gap-4 md:gap-10 font-medium">
-            <ul className="hidden md:flex gap-10">
+            <ul className="hidden md:flex gap-10 ">
               <li>
-                <a href="#home">Home</a>
+                <a
+                  href="#home"
+                  className="hover:text-black dark:hover:text-white transition-all duration-300"
+                >
+                  Home
+                </a>
               </li>
               <li>
-                <a href="#aboutme">About Me</a>
+                <a
+                  href="#skills"
+                  className="hover:text-black dark:hover:text-white transition-all duration-300"
+                >
+                  Skills
+                </a>
               </li>
               <li>
-                <a href="#projects">Projects</a>
+                <a
+                  href="#projects"
+                  className="hover:text-black dark:hover:text-white transition-all duration-300"
+                >
+                  Projects
+                </a>
               </li>
             </ul>
 
             <div className="hidden md:block  px-3 py-2 bg-blackColor dark:bg-blackColorLight text-whiteColor">
-              <button className="">Contact Me</button>
+              <a href="#contactme">
+                <button className="">Contact Me</button>
+              </a>
             </div>
 
             <span

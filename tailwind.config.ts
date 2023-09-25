@@ -19,6 +19,7 @@ const config: Config = {
         textColorLight: "#a3a3a3",
         bodyColor: "#dedede",
         containerColor: "#d4d4d4",
+        textGray: "#d5d4d500",
       },
 
       colors: {
@@ -31,6 +32,7 @@ const config: Config = {
         textColorLight: "#a3a3a3",
         bodyColor: "#dedede",
         containerColor: "#d4d4d4",
+        textGray: "#d5d4d500",
       },
     },
   },

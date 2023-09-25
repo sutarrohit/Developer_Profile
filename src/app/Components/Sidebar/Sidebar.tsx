@@ -25,8 +25,8 @@ const Sidebar: React.FC<SidebarPros> = ({ openMenu, setOpenMenu }) => {
               </a>
             </li>
             <li>
-              <a href="#aboutMe" onClick={() => setOpenMenu(!openMenu)}>
-                About Me
+              <a href="#skills" onClick={() => setOpenMenu(!openMenu)}>
+                Skills
               </a>
             </li>
             <li>
@@ -41,7 +41,9 @@ const Sidebar: React.FC<SidebarPros> = ({ openMenu, setOpenMenu }) => {
           className=" border px-8 py-1 font-medium mx-auto"
           onClick={() => setOpenMenu(!openMenu)}
         >
-          <button>Contact Me</button>
+          <a href="#contactme" onClick={() => setOpenMenu(!openMenu)}>
+            <button>Contact Me</button>
+          </a>
         </div>
       </div>
     </div>
