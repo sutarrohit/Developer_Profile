@@ -5,12 +5,16 @@ import { useForm, ValidationError } from "@formspree/react";
 import { CiLocationArrow1 } from "react-icons/ci";
 import dotenv from "dotenv";
 
+import { useInView } from "react-intersection-observer";
+
 dotenv.config();
 
 const ContactMe = () => {
   const FROMSPREE = process.env.NEXT_PUBLIC_FROMSPREE || "";
   const [state, handleSubmit] = useForm(FROMSPREE);
   const [messageSent, setMessageSent] = useState(false);
+
+  const { ref: contactMeRef, inView: contactMeRefVisible } = useInView();
 
   useEffect(() => {
     if (state.succeeded) {
@@ -22,13 +26,20 @@ const ContactMe = () => {
     <form onSubmit={handleSubmit}>
       <div
         id="contactme"
-        className="min-h-screen border flex justify-center border-red-500 mb-[4rem] md:mb-[0rem]"
+        className="min-h-screen flex justify-center mb-[4rem] md:mb-[0rem]"
       >
-        <div className="relative w-full md:w-[80%] border border-red-700 flex flex-col gap-2 md:flex-row justify-center items-center mt-28 md:0">
+        <div
+          ref={contactMeRef}
+          className="relative w-full md:w-[80%] flex flex-col gap-2 md:flex-row justify-center items-center mt-28 md:0"
+        >
           {/* left */}
-          <div className="relative">
+          <div
+            className={`relative ${
+              contactMeRefVisible ? "animate-ContactMemoveLeft" : ""
+            } `}
+          >
             {/* box */}
-            <div className=" relative left-4 md:left-[2rem]  border-b-4 border-firstColor w-[19rem] md:w-[22rem] flex flex-col gap-4 bg-textColorLight text-blackColor">
+            <div className=" relative z-[5] left-4 md:left-[2rem]  border-b-4 border-firstColor w-[19rem] md:w-[22rem] flex flex-col gap-4 bg-textColorLight text-blackColor">
               <div className="geometric-box top-[2rem] left-[15rem] md:left-[18rem]"></div>
               <div className="relative  h-20">
                 <h2 className="absolute font-bold text-4xl mt-10 dark:text-white bottom-4 left-[-2rem] md:left-[-2.7rem] ">
@@ -70,8 +81,12 @@ const ContactMe = () => {
             </div>
           </div>
 
-          {/* left */}
-          <div className="border bg-black border-blackColorLight w-[90%] md:w-[30rem] p-5 md:p-12 flex flex-col gap-4">
+          {/* right */}
+          <div
+            className={` relative border bg-black border-blackColorLight w-[90%] md:w-[30rem] p-5 md:p-12 flex flex-col gap-4 ${
+              contactMeRefVisible ? "animate-ContactMemoveRight" : ""
+            }`}
+          >
             <p className="font-bold text-white">Send Me a Message</p>
 
             <div className="flex flex-col md:flex-row gap-2">

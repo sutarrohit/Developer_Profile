@@ -1,16 +1,19 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import { BiLogoGithub } from "react-icons/bi";
 import { CgWebsite } from "react-icons/cg";
-
 import project1 from "../../img/project-1.jpg";
 import GoCourse from "../../img/GoCourse.png";
 import movieInfo from "../../img/movieInfo.png";
 import DevProfile from "../../img/DevProfile.png";
 import chatGPT from "../../img/chatGPT.png";
 import nftMarketplace from "../../img/nft.png";
+import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
+  const { ref: projectRef, inView: projectVisible } = useInView();
+
   const projectData = [
     {
       image: GoCourse,
@@ -63,21 +66,33 @@ const Projects = () => {
   ];
 
   return (
-    <div
-      id="projects"
-      className="min-h-[110vh] border border-green-500 flex justify-center"
-    >
-      <div className="border w-full md:w-[80%]">
-        <h1 className="text-center mt-[6rem] font-bold text-5xl">Projects</h1>
+    <div className="relative min-h-[110vh] flex justify-center">
+      <div id="projects" className=" w-full md:w-[80%]">
+        <h1
+          ref={projectRef}
+          className={`relative text-center mt-[6rem] font-bold text-5xl ${
+            projectVisible ? "animate-ContactMemoveLeft" : ""
+          }`}
+        >
+          Projects
+        </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 px-8">
+        <div className=" relative grid grid-cols-1 md:grid-cols-4 gap-6 mt-8 px-8">
           {projectData.map((element, key) => {
             return (
               <div
-                className=" hover:bg-white hover:shadow-lg p-3 min-h-[20rem]  dark:hover:bg-blackColorLight  hover:border-none transition ease-in-out duration-200"
+                className={`relative hover:bg-white hover:shadow-lg p-3 min-h-[20rem]  dark:hover:bg-blackColorLight  hover:border-none transition ease-in-out duration-200 ${
+                  projectVisible ? "animate-ProjectMove" : ""
+                }`}
                 key={key}
               >
-                <Image src={element.image} alt="card" className="h-[10rem]" />
+                <Image
+                  src={element.image}
+                  alt="card"
+                  width={350}
+                  height={350}
+                  className="h-[10rem]"
+                />
                 <a href={element.website} target="_blank">
                   <h4 className="font-bold my-2 hover:text-firstColor ">
                     {element.projectName}

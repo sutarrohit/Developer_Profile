@@ -21,6 +21,7 @@ const Header = () => {
             <span className="font-semibold">Rohit Sutar</span>
           </div>
 
+          {/* right */}
           <div className="flex justify-center items-center gap-4 md:gap-10 font-medium">
             <ul className="hidden md:flex gap-10 ">
               <li>
@@ -31,20 +32,21 @@ const Header = () => {
                   Home
                 </a>
               </li>
-              <li>
-                <a
-                  href="#skills"
-                  className="hover:text-black dark:hover:text-white transition-all duration-300"
-                >
-                  Skills
-                </a>
-              </li>
+
               <li>
                 <a
                   href="#projects"
                   className="hover:text-black dark:hover:text-white transition-all duration-300"
                 >
                   Projects
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  className="hover:text-black dark:hover:text-white transition-all duration-300"
+                >
+                  Skills
                 </a>
               </li>
             </ul>

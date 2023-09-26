@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   SiJavascript,
@@ -14,8 +15,11 @@ import {
   SiHiveBlockchain,
 } from "react-icons/si";
 import { TbBrandNextjs, TbBrandNodejs, TbBrandHtml5 } from "react-icons/tb";
+import { useInView } from "react-intersection-observer";
 
 const Skills = () => {
+  const { ref: skillRef, inView: skillVisible } = useInView();
+
   const skillData = [
     {
       name: "JavaScript",
@@ -84,12 +88,14 @@ const Skills = () => {
   ];
 
   return (
-    <div
-      id="skills"
-      className="min-h-screen border border-red-700 flex justify-center"
-    >
-      <div className=" w-full md:w-[80%] border border-pink-600">
-        <div className="text-center mt-[6rem] font-bold text-[3rem]">
+    <div id="skills" className={`relative min-h-screen  flex justify-center`}>
+      <div className=" w-full md:w-[80%]">
+        <div
+          ref={skillRef}
+          className={`relative text-center mt-[6rem] font-bold text-[3rem]  ${
+            skillVisible ? "animate-moveLeft" : ""
+          }`}
+        >
           Skills
         </div>
         <div className=" flex items-center justify-center m-6 md:mt-14">
@@ -97,7 +103,9 @@ const Skills = () => {
             {skillData.map((element, key) => {
               return (
                 <div
-                  className="border-2 border-blackColorLight w-[125px] h-[99px] flex flex-col justify-center items-center gap-3 hover:bg-white hover:border-none dark:hover:bg-textColor dark:hover:text-white transition-all duration-300 "
+                  className={`border-2 border-blackColorLight w-[125px] h-[99px] flex flex-col justify-center items-center gap-3 hover:bg-white hover:border-none dark:hover:bg-textColor dark:hover:text-white transition-all duration-300 ${
+                    skillVisible ? "animate-SkillMove" : ""
+                  }`}
                   key={key}
                 >
                   <div className="text-4xl">
