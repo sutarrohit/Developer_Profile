@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  developer_profile:
+    image: developer_profile:latest
+    ports:
+      - 3000:3000

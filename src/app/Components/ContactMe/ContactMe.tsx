@@ -11,7 +11,7 @@ dotenv.config();
 
 const ContactMe = () => {
   const FROMSPREE = process.env.NEXT_PUBLIC_FROMSPREE || "";
-  const [state, handleSubmit] = useForm(FROMSPREE);
+  const [state, handleSubmit] = useForm(FROMSPREE || "123xyz");
   const [messageSent, setMessageSent] = useState(false);
 
   const { ref: contactMeRef, inView: contactMeRefVisible } = useInView();
