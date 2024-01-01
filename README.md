@@ -5,6 +5,15 @@
 - The website is designed to be responsive and visually appealing.
 
 ### Installation
+
+
+Docker : 
+- Make sure you have Docker installed on your machine.
+- Run this command to start the project.
+  ```bash
+    docker compose up   
+#
+
 To run the project locally, make sure you have Node.js and npm (Node Package Manager) installed on your machine. Then follow these steps:
 
 ## Clone the repository to your local machine using the following command:
