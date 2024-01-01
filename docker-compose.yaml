@@ -2,6 +2,10 @@ version: "3"
 
 services:
   developer_profile:
-    image: developer_profile:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    image: rohitsutar083/developer_profile:latest
     ports:
-      - 3000:3000
+      - "3000:3000"

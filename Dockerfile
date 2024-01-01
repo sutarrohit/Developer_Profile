@@ -1,8 +1,18 @@
-FROM node:16
+# Stage 1: Base image for installing dependencies
+FROM node:21 as base 
 WORKDIR /app
-COPY ./package*.json ./
+COPY package.json ./
 RUN npm install
+
+# Stage 2: Development stage
+FROM base as development
+COPY . . 
+CMD [ "npm","run", "dev" ]
+
+
+# Stage 3: Production stage
+FROM base as production
 COPY . .
 RUN npm run build
-EXPOSE 3000
-CMD ["npm","run","start"]
+RUN npm prune -- production   
+CMD [ "npm","run", "start" ]
