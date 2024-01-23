@@ -11,20 +11,14 @@ const bai_jamjuree = Bai_Jamjuree({
 });
 
 export const metadata: Metadata = {
-  title: "Profile",
+  title: "Rohit Sutar",
   description: "Developer Profile",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="light" style={{ colorScheme: "light" }}>
-      <body
-        className={`${bai_jamjuree.className} bg-bodyColor dark:bg-black text-textColor dark:text-bodyColor`}
-      >
+      <body className={`${bai_jamjuree.className} bg-bodyColor dark:bg-black text-textColor dark:text-bodyColor`}>
         <Providers>{children}</Providers>
       </body>
     </html>
