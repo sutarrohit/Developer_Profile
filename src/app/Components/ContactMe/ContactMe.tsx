@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { FaGithubSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import { useForm, ValidationError } from "@formspree/react";
 import { CiLocationArrow1 } from "react-icons/ci";
+import Loader from "../Loader.tsx/Loader";
 import dotenv from "dotenv";
 
 import { useInView } from "react-intersection-observer";
@@ -24,20 +25,13 @@ const ContactMe = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div
-        id="contactme"
-        className="min-h-screen flex justify-center mb-[4rem] md:mb-[0rem]"
-      >
+      <div id="contactme" className="min-h-screen flex justify-center mb-[4rem] md:mb-[0rem]">
         <div
           ref={contactMeRef}
           className="relative w-full md:w-[80%] flex flex-col gap-2 md:flex-row justify-center items-center mt-28 md:0"
         >
           {/* left */}
-          <div
-            className={`relative ${
-              contactMeRefVisible ? "animate-ContactMemoveLeft" : ""
-            } `}
-          >
+          <div className={`relative ${contactMeRefVisible ? "animate-ContactMemoveLeft" : ""} `}>
             {/* box */}
             <div className=" relative z-[5] left-4 md:left-[2rem]  border-b-4 border-firstColor w-[19rem] md:w-[22rem] flex flex-col gap-4 bg-textColorLight text-blackColor">
               <div className="geometric-box top-[2rem] left-[15rem] md:left-[18rem]"></div>
@@ -48,8 +42,7 @@ const ContactMe = () => {
               </div>
 
               <p className="w-[85%] mx-auto text-[0.9rem]">
-                I will read all emails. Send me any message you want and I'll
-                get back to you
+                I will read all emails. Send me any message you want and I'll get back to you
               </p>
               <p className="w-[85%] mx-auto text-[0.9rem] mb-6">
                 I need your <span className="font-semibold">Name </span> and
@@ -68,10 +61,7 @@ const ContactMe = () => {
                 <a href="https://github.com/sutarrohit" target="_blank">
                   <FaGithubSquare />
                 </a>
-                <a
-                  href="https://linkedin.com/in/rohit-sutar-89687a1b6"
-                  target="_blank"
-                >
+                <a href="https://linkedin.com/in/rohit-sutar-89687a1b6" target="_blank">
                   <FaLinkedin />
                 </a>
                 <a href="https://twitter.com/imSrohitS" target="_blank">
@@ -100,11 +90,7 @@ const ContactMe = () => {
                 />
               </div>
 
-              <ValidationError
-                prefix="fname"
-                field="text"
-                errors={state.errors}
-              />
+              <ValidationError prefix="fname" field="text" errors={state.errors} />
 
               <div className="flex border border-blackColorLight  ">
                 <input
@@ -116,11 +102,7 @@ const ContactMe = () => {
                 />
               </div>
 
-              <ValidationError
-                prefix="lname"
-                field="text"
-                errors={state.errors}
-              />
+              <ValidationError prefix="lname" field="text" errors={state.errors} />
             </div>
 
             <div className="flex border border-blackColorLight  ">
@@ -143,27 +125,28 @@ const ContactMe = () => {
                 className="resize-none w-full bg-transparent h-[7rem] md:h-[10rem] focus:outline-none"
               />
             </div>
-            <ValidationError
-              prefix="message"
-              field="message"
-              errors={state.errors}
-            />
+            <ValidationError prefix="message" field="message" errors={state.errors} />
 
             <div>
               <button
-                className="p-2 bg-firstColor text-whiteColor font-semibold flex justify-center items-center gap-1"
+                className="p-2 w-[100%] bg-firstColor text-whiteColor font-semibold flex justify-center items-center gap-1"
                 type="submit"
                 disabled={state.submitting}
               >
-                <CiLocationArrow1 />
-                Send Message
+                {state.submitting ? (
+                  <Loader />
+                ) : (
+                  <>
+                    <CiLocationArrow1 />
+                    Send Message
+                  </>
+                )}
               </button>
 
               <div className="text-[0.8rem] mt-6 text-green-500">
                 {messageSent && (
                   <p className="font-bold ">
-                    Message sent successfully{" "}
-                    <span className="font-bold text-[1rem]">&#9745;</span>
+                    Message sent successfully <span className="font-bold text-[1rem]">&#9745;</span>
                   </p>
                 )}
               </div>
