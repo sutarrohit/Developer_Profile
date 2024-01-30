@@ -2,26 +2,25 @@ name: testBuild workflow
 
 on:
   push:
-    branch: -dev
-  pull:
-    branch: -dev
-
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
   workflow_dispatch:
 
-  jobs:
-    runBuild:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - name: hello world
+jobs:
+  runBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: hello world
         run: echo "Hello World"
         shell: bash
 
-    goodBye:
-      run-on: ubuntu-latest
-      steps:
-       - name: goodbye world
-       run: echo "Bye world"
-       shell: bash
-
-
+  goodBye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye world
+        run: echo "Bye world"
+        shell: bash
