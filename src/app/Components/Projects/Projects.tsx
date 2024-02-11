@@ -4,6 +4,7 @@ import Image from "next/image";
 import { BiLogoGithub } from "react-icons/bi";
 import { CgWebsite } from "react-icons/cg";
 import project1 from "../../img/project-1.jpg";
+import NotiFly from "../../img/notifly.png";
 import GoCourse from "../../img/GoCourse.png";
 import movieInfo from "../../img/movieInfo.png";
 import DevProfile from "../../img/DevProfile.png";
@@ -16,10 +17,18 @@ const Projects = () => {
 
   const projectData = [
     {
+      image: NotiFly,
+      projectName: "NotiFly",
+      description:
+        "Notifly is a crypto notification platform designed to deliver real-time cryptocurrency price notifications.",
+      github: "https://github.com/sutarrohit/NotiFly",
+      website: "https://noti-fly-web.vercel.app/",
+    },
+    {
       image: GoCourse,
       projectName: "Go Course",
       description:
-        "GoCourse is a modern and feature-rich online platform designed for selling and purchasing courses.User have multiple courses to buy",
+        "GoCourse is a modern and feature-rich online platform designed for selling and purchasing courses.User have multiple courses to buy.",
       github: "https://github.com/sutarrohit/GoCourse_Frontend",
       website: "https://go-course-frontend.vercel.app/",
     },
@@ -35,7 +44,7 @@ const Projects = () => {
       image: nftMarketplace,
       projectName: "NFT Marketplace",
       description:
-        "NFT Marketplace allows users to create, buy, list and sell non-fungible tokens (NFTs) on the Ethereum and EVM compatible blockchains",
+        "NFT Marketplace allows users to create, buy, list and sell non-fungible tokens (NFTs) on the Ethereum and EVM compatible blockchains.",
       github: "https://github.com/sutarrohit/Full-Stack-NFTMarketplace",
       website: "https://full-stack-nft-marketplace-rtlx.vercel.app/",
     },
@@ -86,17 +95,9 @@ const Projects = () => {
                 }`}
                 key={key}
               >
-                <Image
-                  src={element.image}
-                  alt="card"
-                  width={350}
-                  height={350}
-                  className="h-[10rem]"
-                />
+                <Image src={element.image} alt="card" width={350} height={350} className="h-[10rem]" />
                 <a href={element.website} target="_blank">
-                  <h4 className="font-bold my-2 hover:text-firstColor ">
-                    {element.projectName}
-                  </h4>
+                  <h4 className="font-bold my-2 hover:text-firstColor ">{element.projectName}</h4>
                 </a>
 
                 <p>{element.description}</p>
