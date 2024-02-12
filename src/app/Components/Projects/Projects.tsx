@@ -10,12 +10,21 @@ import movieInfo from "../../img/movieInfo.png";
 import DevProfile from "../../img/DevProfile.png";
 import chatGPT from "../../img/chatGPT.png";
 import nftMarketplace from "../../img/nft.png";
+import memoria from "../../img/memoria.png";
 import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
   const { ref: projectRef, inView: projectVisible } = useInView();
 
   const projectData = [
+    {
+      image: memoria,
+      projectName: "Memoria",
+      description:
+        "Memoria is a versatile note-taking web application designed for easy organization and access to your thoughts and ideas.",
+      github: "https://github.com/sutarrohit/memoria",
+      website: "https://memoria-eosin.vercel.app/",
+    },
     {
       image: NotiFly,
       projectName: "NotiFly",
