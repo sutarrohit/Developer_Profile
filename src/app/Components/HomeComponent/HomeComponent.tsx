@@ -85,9 +85,9 @@ const HomeComponent = () => {
         <div>
           <p className="  md:w-[80%] p-2 mt-4 md:ml-[14rem] font-normal md:text-[1.1rem] md:hidden">
             <span className="font-bold text-2xl">Full Stack Developer </span>{" "}
-            I'm a full-stack developer with expertise in both frontend and
-            backend technologies. With a keen eye for user-centric design and a
-            knack for robust backend architecture.
+            I'm a full-stack developer with expertise in frontend and backend
+            technologies, committed to building seamless user experiences and
+            robust backend systems.
           </p>
         </div>
       </div>
