@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="w-full md:w-[80%] flex flex-col-reverse md:flex-row justify-evenly md:justify-around items-center">
         <div>
           <p className="font-bold">
-            © Copyright 2023 - Developed by Rohit Sutar. All right reserved.
+            © Copyright 2024 - Developed by Rohit Sutar. All right reserved.
           </p>
         </div>
         <div className="font-bold ">
