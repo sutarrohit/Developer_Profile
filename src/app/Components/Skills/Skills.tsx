@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SiJavascript,
   SiTypescript,
@@ -19,6 +19,7 @@ import { useInView } from "react-intersection-observer";
 
 const Skills = () => {
   const { ref: skillRef, inView: skillVisible } = useInView();
+  const [isAnimationEnd, setIsAnimationEnd] = useState(false);
 
   const skillData = [
     {
@@ -93,8 +94,11 @@ const Skills = () => {
         <div
           ref={skillRef}
           className={`relative text-center mt-[6rem] font-bold text-[3rem]  ${
-            skillVisible ? "animate-moveLeft" : ""
+            skillVisible && !isAnimationEnd ? "animate-moveLeft" : ""
           }`}
+          onAnimationEnd={() => {
+            setIsAnimationEnd(true);
+          }}
         >
           Skills
         </div>
@@ -104,9 +108,12 @@ const Skills = () => {
               return (
                 <div
                   className={`border-2 border-blackColorLight w-[125px] h-[99px] flex flex-col justify-center items-center gap-3 hover:bg-white hover:border-none dark:hover:bg-textColor dark:hover:text-white transition-all duration-300 ${
-                    skillVisible ? "animate-SkillMove" : ""
+                    skillVisible && !isAnimationEnd ? "animate-SkillMove" : ""
                   }`}
                   key={key}
+                  onAnimationEnd={() => {
+                    setIsAnimationEnd(true);
+                  }}
                 >
                   <div className="text-4xl">
                     {React.createElement(element.image)}

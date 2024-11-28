@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { FaGithubSquare, FaLinkedin, FaTwitterSquare } from "react-icons/fa";
 import homeImg from "../../img/IMG_8756 copy.jpg";
@@ -9,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 
 const HomeComponent = () => {
   const { ref: homeRef, inView: homeVisible } = useInView();
+  const [isAnimationEnd, setIsAnimationEnd] = useState(false);
 
   return (
     <div className="relative min-h-[90vh] flex justify-center ">
@@ -16,7 +17,8 @@ const HomeComponent = () => {
         {/* left */}
         <div
           className={`relative flex flex-col justify-center items-center md:h-[90vh] 
-          ${homeVisible ? "animate-moveLeft" : ""}`}
+          ${homeVisible && !isAnimationEnd ? "animate-moveLeft" : ""}`}
+          onAnimationEnd={() => setIsAnimationEnd(true)}
         >
           <h1 className="text-[2.2rem] md:text-[3rem] font-bold text-blackColor dark:text-white">
             Rohit Stuar
@@ -33,7 +35,7 @@ const HomeComponent = () => {
         <div className={`flex justify-center items-center `}>
           <div
             className={`relative flex flex-col md:flex-row justify-center items-center ${
-              homeVisible ? "animate-moveRight" : ""
+              homeVisible && !isAnimationEnd ? "animate-moveRight" : ""
             }`}
           >
             <div>

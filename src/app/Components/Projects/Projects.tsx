@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { BiLogoGithub } from "react-icons/bi";
 import { CgWebsite } from "react-icons/cg";
@@ -15,6 +15,7 @@ import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
   const { ref: projectRef, inView: projectVisible } = useInView();
+  const [isAnimationEnd, setIsAnimationEnd] = useState(false);
 
   const projectData = [
     {
@@ -89,8 +90,11 @@ const Projects = () => {
         <h1
           ref={projectRef}
           className={`relative text-center mt-[6rem] font-bold text-5xl ${
-            projectVisible ? "animate-ContactMemoveLeft" : ""
+            projectVisible && !isAnimationEnd ? "animate-ContactMemoveLeft" : ""
           }`}
+          onAnimationEnd={() => {
+            setIsAnimationEnd(true);
+          }}
         >
           Projects
         </h1>
@@ -100,13 +104,24 @@ const Projects = () => {
             return (
               <div
                 className={`relative hover:bg-white hover:shadow-lg p-3 min-h-[20rem]  dark:hover:bg-blackColorLight  hover:border-none transition ease-in-out duration-200 ${
-                  projectVisible ? "animate-ProjectMove" : ""
+                  projectVisible && !isAnimationEnd ? "animate-ProjectMove" : ""
                 }`}
                 key={key}
+                onAnimationEnd={() => {
+                  setIsAnimationEnd(true);
+                }}
               >
-                <Image src={element.image} alt="card" width={350} height={350} className="h-[10rem]" />
+                <Image
+                  src={element.image}
+                  alt="card"
+                  width={350}
+                  height={350}
+                  className="h-[10rem]"
+                />
                 <a href={element.website} target="_blank">
-                  <h4 className="font-bold my-2 hover:text-firstColor ">{element.projectName}</h4>
+                  <h4 className="font-bold my-2 hover:text-firstColor ">
+                    {element.projectName}
+                  </h4>
                 </a>
 
                 <p>{element.description}</p>
