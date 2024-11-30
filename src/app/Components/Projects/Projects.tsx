@@ -11,6 +11,7 @@ import DevProfile from "../../img/DevProfile.png";
 import chatGPT from "../../img/chatGPT.png";
 import nftMarketplace from "../../img/nft.png";
 import memoria from "../../img/memoria.png";
+import grouple from "../../img/grouple.png";
 import { useInView } from "react-intersection-observer";
 
 const Projects = () => {
@@ -18,6 +19,14 @@ const Projects = () => {
   const [isAnimationEnd, setIsAnimationEnd] = useState(false);
 
   const projectData = [
+    {
+      image: grouple,
+      projectName: "Grouple",
+      description:
+        "Grouple is an interactive EdTech platform where educators and learners connect, collaborate, and grow. Grouple empowers meaningful relationships through shared learning experiences.",
+      github: "https://github.com/sutarrohit/grouple",
+      website: "https://grouple-dev.vercel.app",
+    },
     {
       image: memoria,
       projectName: "Memoria",
