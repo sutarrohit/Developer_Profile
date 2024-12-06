@@ -61,7 +61,7 @@ const Header = () => {
               onClick={() =>
                 setTheme(resolvedTheme === "dark" ? "light" : "dark")
               }
-              className="text-2xl"
+              className="text-2xl cursor-pointer"
             >
               {resolvedTheme === "dark" ? (
                 <MdOutlineWbSunny />
